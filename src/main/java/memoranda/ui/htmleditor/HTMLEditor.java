@@ -254,23 +254,23 @@ public class HTMLEditor extends JPanel {
 
 	CharTablePanel charTablePanel = new CharTablePanel(editor);
 
-	boolean charTableShow = false;
+	private boolean _charTableShow = false; //TASK 2-2 SMELL BETWEEN CLASSES (Indecent Exposure)
 
 	public JTabbedPane toolsPanel = new JTabbedPane();
-	public boolean toolsPanelShow = false;
+	private boolean _toolsPanelShow = false; //TASK 2-2 SMELL BETWEEN CLASSES (Indecent Exposure)
 
 	public void showToolsPanel() {
-		if (toolsPanelShow)
+		if (_toolsPanelShow)
 			return;
 		this.add(toolsPanel, BorderLayout.SOUTH);
-		toolsPanelShow = true;
+		_toolsPanelShow = true;
 	}
 
 	public void hideToolsPanel() {
-		if (!toolsPanelShow)
+		if (!_toolsPanelShow)
 			return;
 		this.remove(charTablePanel);
-		toolsPanelShow = false;
+		_toolsPanelShow = false;
 	}
 
 	void addCharTablePanel() {
@@ -289,16 +289,16 @@ public class HTMLEditor extends JPanel {
 			Local.getString("Insert character"),
 			new ImageIcon(cl.getResource("/htmleditor/icons/char.png"))) {
 		public void actionPerformed(ActionEvent e) {
-			if (!charTableShow) {
+			if (!_charTableShow) {
 				addCharTablePanel();
-				charTableShow = true;
+				_charTableShow = true;
 				insCharActionB.setBorder(border2);
 			} else {
 				removeCharTablePanel();
-				charTableShow = false;
+				_charTableShow = false;
 				insCharActionB.setBorder(border1);
 			}
-			insCharActionB.setBorderPainted(charTableShow);
+			insCharActionB.setBorderPainted(_charTableShow);
 		}
 	};
 
